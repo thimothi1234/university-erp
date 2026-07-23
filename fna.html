@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finance and Accounts Department at IIT Hyderabad - Managing institutional finances, budgets, and financial services">
+    <title>Finance & Accounts - IIT Hyderabad</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Modern CSS Reset -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+
+           .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 420px; /* Fixed height for consistency */
+            perspective: 1000px;
+            margin-bottom: 20px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 8px;
+        }
+        
+        .flip-card-front {
+            background-color: #f5f5f5;
+            color: black;
+        }
+        
+        .flip-card-back {
+            background-color: #003366;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto; /* Add scroll if content is too long */
+        }
+        
+        .flip-card-back h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .flip-card-back ul {
+            text-align: left;
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        .flip-card-back li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        /* Staff photo styles */
+        .staff-photo {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+        }
+        :root {
+            --iith-blue: #003366;
+            --iith-orange: #FF6600;
+            --iith-light-blue: #0066CC;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--iith-blue);
+        }
+        
+        a {
+            color: var(--iith-light-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--iith-orange);
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--iith-blue);
+            color: var(--white);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin-left: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            color: var(--iith-orange);
+        }
+        
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 1rem;
+        }
+        
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--iith-blue);
+        }
+        
+        .logo-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        /* Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-nav li {
+            position: relative;
+        }
+        
+        .main-nav a {
+            display: block;
+            padding: 1rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+        
+        .main-nav a:hover {
+            color: var(--iith-orange);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-menu li {
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .dropdown-menu a {
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+        }
+        
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('/images/finance-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 1rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding: 1rem;
+            background-color: var(--white);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .breadcrumbs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .breadcrumbs a {
+            color: var(--medium-gray);
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--iith-orange);
+        }
+        
+        .breadcrumbs span {
+            color: var(--iith-blue);
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+        
+        .sidebar h3 {
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--iith-orange);
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--dark-gray);
+        }
+        
+        .sidebar-menu a:hover {
+            color: var(--iith-orange);
+            padding-left: 0.5rem;
+        }
+        
+        /* Content Area */
+        .content {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+        
+        /* Quick Links Grid */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .quick-link-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quick-link-card h3 {
+            margin-top: 0;
+            color: var(--iith-blue);
+        }
+        
+        /* Staff Cards */
+        .staff-section {
+            margin: 3rem 0;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .staff-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .staff-photo {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+        }
+        
+        .staff-info h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .staff-position {
+            color: var(--iith-orange);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .staff-contact {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--iith-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--iith-orange);
+        }
+        
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-menu a {
+            color: var(--white);
+            opacity: 0.8;
+        }
+        
+        .footer-menu a:hover {
+            opacity: 1;
+            color: var(--iith-orange);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Utility Classes */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--iith-orange);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--iith-blue);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--iith-orange);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Accessibility Features */
+        .accessibility-tools {
+            position: fixed;
+            top: 100px;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--iith-blue);
+            border-radius: 4px 0 0 4px;
+            box-shadow: var(--shadow);
+        }
+        
+        .accessibility-btn {
+            display: block;
+            padding: 0.5rem;
+            color: var(--white);
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .accessibility-btn:hover {
+            background-color: var(--iith-orange);
+        }
+        
+        .accessibility-btn i {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Social Links -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="contact-info">
+                <i class="fas fa-phone-alt"></i> +91-40-2301-6032 | 
+                <i class="fas fa-envelope"></i> accounts@iith.ac.in
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/IITHyderabad/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/IITHyderabad" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/school/iithyderabad/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/c/IITHyderabad" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/iithyderabad/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/19/IIT_Hyderabad_Insignia.svg/800px-IIT_Hyderabad_Insignia.svg.png" alt="IIT Hyderabad Logo">
+                <div class="logo-text">
+                    <h1>IIT Hyderabad</h1>
+                    <p>Finance & Accounts Section</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about">About Finance Office</a></li>
+                            <li><a href="/organization">Organization Structure</a></li>
+                            <li><a href="/functions">Functions</a></li>
+                            <li><a href="/key-administrators">Key Administrators</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/budget">Budget</a></li>
+                            <li><a href="/payroll">Payroll</a></li>
+                            <li><a href="/pension">Pension</a></li>
+                            <li><a href="/grants">Grants & Funds</a></li>
+                            <li><a href="/procurement">Procurement</a></li>
+                            <li><a href="/reimbursements">Reimbursements</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/policies">Policies</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Finance & Accounts Section</h1>
+        <p>Ensuring financial integrity and supporting the academic mission of IIT Hyderabad through effective financial management and services.</p>
+        <a href="/services" class="btn btn-outline">Our Services</a>
+    </section>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-container">
+            <a href="/">Home</a> > <span>Finance & Accounts</span>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h3>Quick Links</h3>
+            <ul class="sidebar-menu">
+                <li><a href="https://iith.ac.in/people/administration/#fin"><i class="fas fa-users"></i> Finance Committee</a></li>
+                <li><a href="/annual-accounts"><i class="fas fa-file-invoice-dollar"></i> Annual Accounts</a></li>
+                <li><a href="/budget"><i class="fas fa-chart-pie"></i> Budget</a></li>
+                <li><a href="/payroll"><i class="fas fa-money-check-alt"></i> Payroll</a></li>
+                <li><a href="/pension"><i class="fas fa-user-tie"></i> Pension</a></li>
+                <li><a href="/grants"><i class="fas fa-hand-holding-usd"></i> Office Orders</a></li>
+                <li><a href="/forms"><i class="fas fa-file-alt"></i> Forms </a></li>
+                <li><a href="/policies"><i class="fas fa-book"></i> Policies</a></li>
+                <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                <li><a href="/contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            
+            <h3>Important Notices</h3>
+            <div class="notices">
+                <div class="notice-item">
+                    <h4><a href="#">Financial Year Closing Schedule</a></h4>
+                    <p>March 15, 2024</p>
+                </div>
+                <div class="notice-item">
+                    <h4><a href="#">New Travel Reimbursement Policy</a></h4>
+                    <p>February 1, 2024</p>
+                </div>
+                <div class="notice-item">
+                    <h4><a href="#">Budget Submission Deadline</a></h4>
+                    <p>January 10, 2024</p>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="content">
+            <h2 class="section-title">Welcome to Finance & Accounts Office</h2>
+            <p>The Finance & Accounts Office at IIT Hyderabad is responsible for the financial management and accounting functions of the institute. Our mission is to provide accurate, timely and meaningful financial information to support decision making, ensure compliance with financial regulations, and safeguard the institute's assets.</p>
+            
+            <p>We are committed to maintaining the highest standards of financial integrity and accountability while providing excellent service to the IIT Hyderabad community.</p>
+            
+
+            
+            <!-- Staff Section -->
+           <div class="staff-section">
+        <h2 class="section-title text-center">Our Team</h2>
+        
+        <h3>Head of Section</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. B. Jagadeswara Rao</h3>
+                            <span class="staff-position">Deputy Registrar (Finance & Accounts)</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6031<br>
+                                <i class="fas fa-envelope"></i> hos.fna@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Overall supervision of Finance & Accounts Department</li>
+                            <li>Budget planning and financial strategy</li>
+                            <li>Financial policy formulation</li>
+                            <li>Institute accounts finalization</li>
+                            <li>Coordination with funding agencies</li>
+                            <li>Financial reporting to governing bodies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Officer Incharge</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. M. Phanindra Kumar</h3>
+                            <span class="staff-position">Sr. Assistant Registrar (Accounts)</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> ar.accounts@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>General accounting operations</li>
+                            <li>Accounts reconciliation</li>
+                            <li>Financial reporting</li>
+                            <li>Tax compliance</li>
+                            <li>Internal audits</li>
+                            <li>Vendor payments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. MVSPH Krishna</h3>
+                            <span class="staff-position">Sr. Assistant Registrar (Finance)</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> ar.finance@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Budget preparation and monitoring</li>
+                            <li>Fund management</li>
+                            <li>Financial planning</li>
+                            <li>Grants administration</li>
+                            <li>Capital expenditure tracking</li>
+                            <li>Financial forecasting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Payroll</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Sree Ramakrishna P</h3>
+                            <span class="staff-position">Sr. Section Officer</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Monthly salary processing</li>
+                            <li>Deductions and recoveries</li>
+                            <li>Leave encashment</li>
+                            <li>Bonus payments</li>
+                            <li>Salary revisions</li>
+                            <li>Pension processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Jithesh</h3>
+                            <span class="staff-position">Accountant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Payroll data entry</li>
+                            <li>Attendance records</li>
+                            <li>Salary slip distribution</li>
+                            <li>PF and tax calculations</li>
+                            <li>New employee onboarding</li>
+                            <li>Payroll queries</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+ <h3>Reimbursement /  Temp Advance / settlement / Purchace order / commitments</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Jeevani</h3>
+                            <span class="staff-position">Accountant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Process Purchase orders</li>
+                            <li>Give commitments</li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Nikhil chetty</h3>
+                            <span class="staff-position">Accountant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Payroll data entry</li>
+                            <li>Attendance records</li>
+                            <li>Salary slip distribution</li>
+                            <li>PF and tax calculations</li>
+                            <li>New employee onboarding</li>
+                            <li>Payroll queries</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+
+                 <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Bheemeswara Reddy</h3>
+                            <span class="staff-position">Executive assistant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Payroll data entry</li>
+                            <li>Attendance records</li>
+                            <li>Salary slip distribution</li>
+                            <li>PF and tax calculations</li>
+                            <li>New employee onboarding</li>
+                            <li>Payroll queries</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+         <h3>Medical Reimbursement/ LTC / CEA / Telephone / CPDA /ERP</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Pradeep Babu</h3>
+                            <span class="staff-position">Assistant section officer</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Process Staff Medical bills</li>
+                            <li>Process Faculty Medical bills</li>
+                            <li>Process Student Medical bills</li>
+                            <li>Process Hospital Medical bills</li>
+                            <li>issue Credit letters</li>
+                
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Sai teja</h3>
+                            <span class="staff-position">Accountant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>CPDA</li>
+                            <li>Travel allowance</li>
+                    
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+
+                 <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="C:\Users\IITH\Pictures\Passphoto.JPG"  width="200" height="200" alt="IIT Hyderabad Logo">
+                                        
+
+                        <div class="staff-info">
+                            <h3>Shri. Chidhruppa Thimothi</h3>
+                            <span class="staff-position">Junior assistant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>ERP F&A</li>
+                            <li>LTC</li>
+                            <li>CEA</li>
+                            <li>Telephone Reimbursement</li>
+                        
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+
+         <h3>Annual Accounts/ Budget preparation / CMD bills </h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Bala Prakash P</h3>
+                            <span class="staff-position">Sr. Section Officer</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>CMD bills</li>
+                            <li>HEFA Payment/Investment/Encashment Matter</li>
+                            
+                    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. R Bharath Reddy</h3>
+                            <span class="staff-position">Assistant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Annual Accounts</li>
+                      
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+         <h3>PAO (PFMS) CELL / BANK RECONCILIATION & RECEIPT CELL</h3>
+        <hr>
+        <div class="staff-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Racha Praveen </h3>
+                            <span class="staff-position">Executive assistant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>Bank Reconciliation & Communication with Banks</li>
+                            <li>Receipt/Refundable Receipts Booking</li>
+        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="staff-photo" style="background-image: url('https://via.placeholder.com/300x200');"></div>
+                        <div class="staff-info">
+                            <h3>Shri. Bolla Ramesh</h3>
+                            <span class="staff-position">Accountant</span>
+                            <div class="staff-contact">
+                                <i class="fas fa-phone"></i> +91-40-2301-6032<br>
+                                <i class="fas fa-envelope"></i> payroll-support@iith.ac.in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Work Responsibilities</h3>
+                        <ul>
+                            <li>All Payments and Vendors Registration of the Institute from PFMS Portal</li>
+                    
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+  
+            
+            <!-- Announcements Section -->
+      
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/policies">Policies</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Important Links</h3>
+                <ul class="footer-menu">
+                    <li><a href="https://iith.ac.in/" target="_blank">IIT Hyderabad Main Website</a></li>
+                    <li><a href="https://academics.iith.ac.in/" target="_blank">Academics</a></li>
+                    <li><a href="https://research.iith.ac.in/" target="_blank">Research</a></li>
+                    <li><a href="https://placements.iith.ac.in/" target="_blank">Placements</a></li>
+                    <li><a href="https://library.iith.ac.in/" target="_blank">Library</a></li>
+                    <li><a href="https://intranet.iith.ac.in/" target="_blank">Intranet</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <address>
+                    <p><i class="fas fa-map-marker-alt"></i> Finance & Accounts Office<br>
+                    Indian Institute of Technology Hyderabad<br>
+                    Kandi, Sangareddy, Telangana 502285</p>
+                    
+                    <p><i class="fas fa-phone"></i> +91-40-2301-6032</p>
+                    <p><i class="fas fa-envelope"></i> finance@iith.ac.in</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:30 PM</p>
+                </address>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Indian Institute of Technology Hyderabad. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Accessibility Tools -->
+    <div class="accessibility-tools">
+        <div class="accessibility-btn" title="Increase Text Size">
+            <i class="fas fa-text-height"></i>
+            <span>A+</span>
+        </div>
+        <div class="accessibility-btn" title="Decrease Text Size">
+            <i class="fas fa-text-width"></i>
+            <span>A-</span>
+        </div>
+        <div class="accessibility-btn" title="High Contrast">
+            <i class="fas fa-adjust"></i>
+            <span>Contrast</span>
+        </div>
+        <div class="accessibility-btn" title="Reset Settings">
+            <i class="fas fa-redo"></i>
+            <span>Reset</span>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // Text size adjustment
+        document.querySelectorAll('.accessibility-btn')[0].addEventListener('click', function() {
+            document.body.style.fontSize = '1.1em';
+        });
+        
+        document.querySelectorAll('.accessibility-btn')[1].addEventListener('click', function() {
+            document.body.style.fontSize = '0.9em';
+        });
+        
+        // High contrast toggle
+        document.querySelectorAll('.accessibility-btn')[2].addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+        
+        // Reset all settings
+        document.querySelectorAll('.accessibility-btn')[3].addEventListener('click', function() {
+            document.body.style.fontSize = '';
+            document.body.classList.remove('high-contrast');
+        });
+        
+        // Dropdown menu functionality for mobile
+        document.querySelectorAll('.dropdown > a').forEach(function(dropdown) {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    const menu = this.nextElementSibling;
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

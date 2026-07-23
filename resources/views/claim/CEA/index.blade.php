@@ -1,0 +1,112 @@
+@extends('project.admin_master')
+
+@section('project')
+<div class="sl-mainpanel">
+      <nav class="breadcrumb sl-breadcrumb">
+        <a class="breadcrumb-item" href="index.html">Claim</a>
+        <a class="breadcrumb-item" href="index.html">Bills</a>
+        <span class="breadcrumb-item active">View</span>
+      </nav>
+<div class="card pd-20 pd-sm-40">
+<div class="card-header card-header-border-bottom d-flex justify-content-between">
+											<h4>Children Education Allowance / Hostel Subsidy</h4>
+
+                      
+            <a class="btn btn-success" href="{{ route('cea.create') }}"> New Claim
+
+
+            </a>
+            
+            
+										</div>
+          @if(session('success'))
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+								{{session('success')}}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+                @endif
+          <div class="table-wrapper">
+            <table id="example" class="table display responsive nowrap">
+              <thead>
+                <tr>
+                <th class="wd-15p">ID</th>
+                  <th class="wd-15p">Name</th>
+                 
+                  
+                  <th class="wd-15p">amount</th>
+                  
+                  <th class="wd-10p">Date</th>
+                  <th class="wd-10p">Attachments</th>
+                  <th class="wd-10p">Status</th>
+                  <th class="wd-10p">ACTION</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+              
+              @foreach($payorders as $payorder)
+              
+			<tr>
+			<td>{{$payorder->id}}  </td>
+			<td>{{$payorder->name}}</td>
+			
+      <td>{{$payorder->total}}</td>
+      <td>{{$payorder->created_at->diffForHumans()}}</td>
+     
+      <td><a href="{{asset('uploads/'.$payorder->path)}}" target="_blank">Open</a></td>
+      
+     
+			
+      <td> <a href="{{url('mybills')}}">Find status of all my transaction</a>
+     </td>
+			<td><form action="{{ route('projects.destroy',$payorder->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('cea.show',$payorder->id) }}">Show</a>
+                    @can('project-edit')
+                    <a class="btn btn-primary" href="{{ route('cea.edit',$payorder->id) }}">Edit</a>
+                    @endcan
+
+
+                    @csrf
+                    @method('DELETE')
+                    @can('project-delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan</td>
+			</tr>
+			@endforeach
+                
+              </tbody>
+              
+            </table>
+          </div><!-- table-wrapper -->
+        </div><!-- card -->
+           
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.uikit.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Blfrtip',
+        order: [[0, 'desc']],
+        scrollX: true,
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ],
+        scrollY: '400px',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+@endsection
